@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:int="http://www.springframework.org/schema/integration"
+    xmlns:int-http="http://www.springframework.org/schema/integration/http"
+    xsi:schemaLocation="
+    http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/integration
+    http://www.springframework.org/schema/integration/spring-integration-4.1.xsd
+    http://www.springframework.org/schema/integration/http
+    http://www.springframework.org/schema/integration/http/spring-integration-http-4.1.xsd">
+ 
+    <int:channel id="dept_send_channel" />
+ 
+    <int:channel id="dept_receive_channel">
+        <int:queue capacity='10' />
+    </int:channel>
+ 
+    <int-http:outbound-gateway
+        id="dept.outbound.gateway"
+        request-channel="dept_send_channel"
+        url="http://localhost:8080/dept-spring/api/departments"
+        http-method="GET"
+        reply-channel="dept_receive_channel"
+        expected-response-type="java.lang.String" />
+
+</beans>

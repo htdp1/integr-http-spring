@@ -1,0 +1,18 @@
+server:
+  port: 8081
+  servlet:
+    context-path: /integr-http-spring
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+spring:
+  application:
+    name: integr-http-spring-local
+
+logging:
+  level:
+    '[com.htdp1.integrhttpspring]': debug
