@@ -1,0 +1,6 @@
+# application 외부에 있는 서비스 연결을 위한 정보
+
+# user defined
+apis:
+  departments: "http://localhost:8080/dept-spring/api/departments"
+  employees: "http://localhost:8080/emp-spring/api/employees"

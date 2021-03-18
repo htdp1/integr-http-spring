@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ImportResource;
 
 @SpringBootApplication
-@ImportResource("classpath:*http-outbound-gateway.xml")
+@ImportResource("classpath:http/http-outbound-gateway.xml")
 public class IntegrHttpSpringApplication {
 	
 	public static void main(String[] args) {

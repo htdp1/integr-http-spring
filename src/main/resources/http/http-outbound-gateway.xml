@@ -9,19 +9,29 @@
     http://www.springframework.org/schema/integration/spring-integration-4.1.xsd
     http://www.springframework.org/schema/integration/http
     http://www.springframework.org/schema/integration/http/spring-integration-http-4.1.xsd">
- 
-    <int:channel id="dept_send_channel" />
- 
+
+    <int:channel id="dept_send_channel" /> 
     <int:channel id="dept_receive_channel">
         <int:queue capacity='10' />
     </int:channel>
- 
     <int-http:outbound-gateway
         id="dept.outbound.gateway"
         request-channel="dept_send_channel"
-        url="http://localhost:8080/dept-spring/api/departments"
+        url="${apis.departments}"
         http-method="GET"
         reply-channel="dept_receive_channel"
+        expected-response-type="java.lang.String" />
+
+    <int:channel id="emp_send_channel" /> 
+    <int:channel id="emp_receive_channel">
+        <int:queue capacity='10' />
+    </int:channel>
+    <int-http:outbound-gateway
+        id="emp.outbound.gateway"
+        request-channel="emp_send_channel"
+        url="${apis.employees}"
+        http-method="GET"
+        reply-channel="emp_receive_channel"
         expected-response-type="java.lang.String" />
 
 </beans>

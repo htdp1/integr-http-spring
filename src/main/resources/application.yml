@@ -12,6 +12,9 @@ management:
 spring:
   application:
     name: integr-http-spring-local
+  config:
+    import: 
+    - application-apis.yml   
 
 logging:
   level:

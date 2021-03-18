@@ -1,4 +1,4 @@
-package com.htdp1.integrhttpspring.dept.controller;
+package com.htdp1.integrhttpspring.emp.controller;
 
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
@@ -16,15 +16,15 @@ import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @Slf4j
-@RequestMapping("/departments")
-public class DepartmentController {
+@RequestMapping("/employees")
+public class EmployeeController {
 
 	@Autowired
-    @Qualifier("dept_send_channel")
+    @Qualifier("emp_send_channel")
     MessageChannel getSendChannel;
  
     @Autowired
-    @Qualifier("dept_receive_channel")
+    @Qualifier("emp_receive_channel")
     PollableChannel getReceiveChannel;
 
     @GetMapping("/gateway")
